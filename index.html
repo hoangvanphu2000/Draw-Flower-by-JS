@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Drawing</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Flower Drawing using Canvas</h1>
+    <canvas id="flowerCanvas" width="500" height="500"></canvas>
+
+    <script>
+        function drawFlower() {
+            const canvas = document.getElementById('flowerCanvas');
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const petalCount = 10;
+            const petalRadius = 100;
+            const flowerRadius = 50;
+
+            // Vẽ cánh hoa
+            for (let i = 0; i < petalCount; i++) {
+                const angle = (i * 2 * Math.PI) / petalCount;
+                const x = centerX + Math.cos(angle) * flowerRadius;
+                const y = centerY + Math.sin(angle) * flowerRadius;
+
+                ctx.beginPath();
+                ctx.arc(x, y, petalRadius, 0, 2 * Math.PI);
+                ctx.fillStyle = 'pink';
+                ctx.fill();
+                ctx.stroke();
+            }
+
+            // Vẽ nhụy hoa
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, flowerRadius, 0, 2 * Math.PI);
+            ctx.fillStyle = 'yellow';
+            ctx.fill();
+            ctx.stroke();
+        }
+
+        window.onload = drawFlower;
+    </script>
+</body>
+</html>
