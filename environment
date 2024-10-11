@@ -1,0 +1,4 @@
+mkdir flower-drawing
+cd flower-drawing
+npm init -y
+npm install express
